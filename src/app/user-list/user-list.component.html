@@ -1,0 +1,71 @@
+<div class="container">
+    <!-- <h3 class="text-center text-primary mt-3">If you add any user please login</h3> -->
+    <form [formGroup]="RegForm" (ngSubmit)="onSubmit()">
+            <div class="row jumbotron box8">
+              <div class="col-sm-12 mx-t3 mb-4">
+                <h2 class="text-center text-info">Register</h2>
+              </div>
+              <div class="col-sm-6 form-group">
+                <label for="name-f">First Name</label>
+                <input type="text" class="form-control" name="fname" id="fname" formControlName="fname" placeholder="Enter your first name." required>
+              </div>
+              <div class="col-sm-6 form-group">
+                <label for="name-l">Last name</label>
+                <input type="text" class="form-control" name="lname" id="lname" formControlName="lname" placeholder="Enter your last name." required>
+              </div>
+              <div class="col-sm-6 form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" id="email" formControlName="email" placeholder="Enter your email." required>
+              </div>
+              <div class="col-sm-6 form-group">
+                <label for="address-1">Address Line-1</label>
+                <input type="address" class="form-control" name="Locality" id="Locality" formControlName="Locality" placeholder="Locality/House/Street no." required>
+              </div>
+              <div class="col-sm-6 form-group">
+                <label for="address-2">Address Line-2</label>
+                <input type="address" class="form-control" name="address" id="address" formControlName="address" placeholder="Village/City Name." required>
+              </div>
+             
+              <div class="col-sm-6 form-group">
+                <label for="tel">Phone</label>
+                <input type="tel" name="phone" class="form-control" id="phone" formControlName="phone" placeholder="Enter Your Contact Number." required>
+              </div>
+             
+        
+              <div class="col-sm-12 form-group mb-3 mt-3">
+                <button class="btn btn-primary float-right" [disabled]="RegForm.invalid"> {{dataValue? "Update" : "Submit"}}</button>
+              </div>
+        
+            </div>
+          </form>
+
+          <table class="table table-bordered mt-5">
+                <thead>
+                   <tr>
+                        <th>First name</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <th>Locality</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                   </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let emp of allEmp">
+                        <td>{{emp.fname}}</td>
+                        <td>{{emp.lname}}</td>
+                        <td>{{emp.email}}</td>
+                        <td>{{emp.Locality}}</td>
+                        <td>{{emp.address}}</td>
+                        <td>{{emp.phone}}</td>
+                        <td>
+                            <button class="btn btn-warning"(click)="editEmp(emp)">Edit</button>
+                            <button class="btn btn-danger mx-1" (click)="deleteEmp(emp.id)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
+<!-- (click)="editEmp(emp)" -->
+<!-- (click)="deleteEmp(emp.id)" -->
