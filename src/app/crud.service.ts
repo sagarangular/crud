@@ -10,15 +10,15 @@ export class CrudService {
   constructor(private http:HttpClient) { }
 
   addEmployee(data:any):Observable<any>{
-   return this.http.post("http://localhost:3000/employees",data)
+   return this.http.post("https://sagarangular.github.io/host_api/db.json",data)
   }
   getEmployee(){
-    return this.http.get("http://localhost:3000/employees")
+    return this.http.get("https://sagarangular.github.io/host_api/db.json")
   }
   deleteEmployee(id:any):Observable<any>{
-    return this.http.delete(`http://localhost:3000/employees/${id}`)
+    return this.http.delete(`https://sagarangular.github.io/host_api/db.json/${id}`)
   }
   updateEmployee(id:any,data:any):Observable<any>{
-    return this.http.put(`http://localhost:3000/employees/${id}`,data)
+    return this.http.put(`https://sagarangular.github.io/host_api/db.json/${id}`,data)
    }
 }
