@@ -62,7 +62,7 @@ editEmp(data:any){
   }
   displayEmp(){
     this.crudOp.getEmployee().subscribe((val:any)=>{
-      this.allEmp = val
+      this.allEmp = val.employees
     })
   }
 }
