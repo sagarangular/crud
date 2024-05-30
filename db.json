@@ -31,19 +31,46 @@
       "fname": "Dhanshri",
       "lname": "sangale",
       "email": "dSanap@gmail.com",
-      "Locality": "magarpatta",
+      "Locality": "hadapsar",
       "address": "pune",
-      "phone": "9404441188",
-      "id": "98e5"
+      "phone": "9404441177",
+      "id": "cb51"
     },
     {
-      "id": "546a",
+      "fname": "Devanshu",
+      "lname": "Sangale",
+      "email": "devandhu@gmail.com",
+      "Locality": "nagar",
+      "address": "Ahmednagar",
+      "phone": "8149562823",
+      "id": "f4a5"
+    },
+    {
+      "id": "625d",
       "fname": "Sagar",
       "lname": "sangale",
       "email": "sagarsangale.b@gmail.com",
-      "Locality": "savedi",
+      "Locality": "hadapsar",
+      "address": "dsadsad",
+      "phone": "9404441177"
+    },
+    {
+      "id": "33ae",
+      "fname": "Devanshu",
+      "lname": "sangale",
+      "email": "devandhu@gmail.com",
+      "Locality": "sdsads",
       "address": "ahmednagar",
-      "phone": "9404441188"
+      "phone": "9404441177"
+    },
+    {
+      "id": "980f",
+      "fname": "Sagar1",
+      "lname": "sangale",
+      "email": "sagar@dsdsas.com",
+      "Locality": "hadapsar",
+      "address": "ahmednagar",
+      "phone": "9404441177"
     }
   ]
 }

@@ -1,24 +1,39 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs';
-
+import {Observable,BehaviorSubject } from 'rxjs';
+import {Userfild} from './crudUser'
 @Injectable({
   providedIn: 'root'
 })
 export class CrudService {
 
   constructor(private http:HttpClient) { }
+  private formVisibility = new BehaviorSubject<boolean>(false);
+  formVisibility$ = this.formVisibility.asObservable();
 
-  addEmployee(data:any):Observable<any>{
-   return this.http.post("http://localhost:3000/employees",data)
+
+  addEmployee(data:Userfild[]):Observable<Userfild[]>{
+   return this.http.post<Userfild[]>("http://localhost:3000/employees",data)
   }
-  getEmployee(){
-    return this.http.get("http://localhost:3000/employees")
+  getEmployee():Observable<Userfild[]>{
+    return this.http.get<Userfild[]>("http://localhost:3000/employees")
   }
-  deleteEmployee(id:any):Observable<any>{
-    return this.http.delete(`http://localhost:3000/employees/${id}`)
+  deleteEmployee(id:Userfild[]):Observable<Userfild[]>{
+    return this.http.delete<Userfild[]>(`http://localhost:3000/employees/${id}`)
   }
-  updateEmployee(id:any,data:any):Observable<any>{
-    return this.http.put(`http://localhost:3000/employees/${id}`,data)
+  updateEmployee(id:Userfild[],data:Userfild[]):Observable<Userfild[]>{
+    return this.http.put<Userfild[]>(`http://localhost:3000/employees/${id}`,data)
+   }
+   
+   getDetails(id:any){
+    return this.http.get(`http://localhost:3000/employees/${id}`)
+   }
+ 
+   showForm() {
+     this.formVisibility.next(true);
+   }
+ 
+   hideForm() {
+     this.formVisibility.next(false);
    }
 }

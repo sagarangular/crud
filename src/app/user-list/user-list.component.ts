@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CrudService } from '../crud.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import {Userfild} from '../crudUser'
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -8,12 +10,13 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class UserListComponent {
 
-  allEmp:any [] =[];
-  displayCrud:boolean=false;
+  allEmp:Userfild [] =[];
   RegForm : FormGroup;
   idValue:any;
-  dataValue:boolean=false;
-    constructor(private fb : FormBuilder,private crudOp : CrudService){
+  formVisible = false;
+  userIdToDelete: any;
+
+    constructor(private fb : FormBuilder,private crudOp : CrudService,private router:Router){
     this.RegForm = this.fb.group({
       fname : ['',[Validators.required, Validators.minLength(3)]],
       lname : ['',[Validators.required,Validators.minLength(3)]],
@@ -24,45 +27,42 @@ export class UserListComponent {
     })
   }
   onSubmit() {
-    if (this.RegForm.valid) {
-      if(this.dataValue == true){
-        this.crudOp.updateEmployee(this.idValue,this.RegForm.value).subscribe((val:any)=>{
-          alert("emp updated...!")        
-        })
-      
-        this.dataValue = false
-      }else{
-        this.crudOp.addEmployee(this.RegForm.value).subscribe((val:any)=>{
-          alert("emp added...!")        
-        })
-       
-      }
-      this.RegForm.reset();
+    if (this.RegForm.valid) {     
+      this.crudOp.addEmployee(this.RegForm.value).subscribe((val:any)=>{
+        alert("emp added...!")        
+      })
+      this.RegForm.reset();      
       this.displayEmp();
-     
     }
   }
-
-deleteEmp(id:any){
-  this.crudOp.deleteEmployee(id).subscribe((val:any)=>{
-    alert("Emp delete...!")
+  setUserIdToDelete(id: any) {
+    this.userIdToDelete = id;
+  }
+deleteEmp(){
+  this.crudOp.deleteEmployee(this.userIdToDelete).subscribe((val:any)=>{    
     this.displayEmp();
   })
 }
-
-editEmp(data:any){
-  this.RegForm.patchValue(data)
-  this.dataValue = true
-  this.idValue = data.id;
-}
-
-
   ngOnInit(){
     this.displayEmp();
+   this.displayForm();
   }
   displayEmp(){
     this.crudOp.getEmployee().subscribe((val:any)=>{
       this.allEmp = val
     })
   }
+  displayForm(){
+    this.crudOp.formVisibility$.subscribe((visible:any )=> {
+      this.formVisible = visible;
+    });
+  }
+
+  detailsPage(id:any){
+    this.router.navigate([`dashboard/view/${id}`])
+  }
+  editEmp(data:any,id:any){
+    this.router.navigate([`dashboard/view/${data}_${id}`])
+  }
+
 }

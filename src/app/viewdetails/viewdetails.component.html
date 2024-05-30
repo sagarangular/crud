@@ -1,0 +1,45 @@
+<div class="container">
+        <div class="col-md-12 mt-5">
+                <button class="btn btn-outline-secondary" (click)="back()"><i class="fa fa-chevron-circle-left"></i></button>
+        </div>
+        <table class="table table-bordered mt-1">
+                <thead>
+                   <tr>
+                        <th>First name</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <th>Locality</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                   </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="!editData">
+                        <td>{{detailEmp.fname}}</td>
+                        <td>{{detailEmp.lname}}</td>
+                        <td>{{detailEmp.email}}</td>
+                        <td>{{detailEmp.Locality}}</td>
+                        <td>{{detailEmp.address}}</td>
+                        <td>{{detailEmp.phone | phone}}</td>
+                        <td>
+                            <button class="btn btn-warning mx-1" (click)="editDetails(detailEmp)">Edit</button>
+                        </td>
+                    </tr>
+                    <tr *ngIf="editData" [formGroup]="RegForm">
+                        <td><input type="text" class="form-control" name="fname" id="fname" formControlName="fname"></td>
+                        <td><input type="text" class="form-control" name="lname" id="lname" formControlName="lname"></td>
+                        <td><input type="text" class="form-control" name="email" id="email" formControlName="email"></td>
+                        <td><input type="text" class="form-control" name="Locality" id="Locality" formControlName="Locality"></td>
+                        <td><input type="text" class="form-control" name="address" id="address" formControlName="address"></td>
+                        <td><input type="text" class="form-control" name="phone"  id="phone" formControlName="phone"></td>
+                        <td style="width:160px">
+                            <button class="btn btn-primary" (click)="SaveUpdateDetails()">Save</button>
+                            <button class="btn btn-light mx-1" (click)="cancelBtn()">Cancel</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+</div>

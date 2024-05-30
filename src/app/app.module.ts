@@ -11,6 +11,9 @@ import { UserListComponent } from './user-list/user-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CrudService } from './crud.service';
 import { LoginComponent } from './login/login.component';
+import { ViewdetailsComponent } from './viewdetails/viewdetails.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PhonePipe } from './phone.pipe';
 
 @NgModule({
   declarations: [
@@ -19,14 +22,18 @@ import { LoginComponent } from './login/login.component';
     NavbarComponent,
     DashboardComponent,
     UserListComponent,
-    LoginComponent
+    LoginComponent,
+    ViewdetailsComponent,
+    PhonePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule,
+    
   ],
   providers: [CrudService],
   bootstrap: [AppComponent]

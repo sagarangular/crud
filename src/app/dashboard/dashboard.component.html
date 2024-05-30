@@ -12,8 +12,12 @@
           
         </ul>
         <div class="d-flex">
-          <button [ngClass]="[router.isActive('/user', true) ? 'd-none': 'd-block' ]" class="btn btn-outline-success" (click)="btnClick()"   type="Add Employ">Login</button>
-          <button [ngClass]="[router.isActive('/user', true) ? 'd-block': 'd-none' ]" class="btn btn-outline-success" (click)="logout()"   type="Add Employ">LogOut</button>
+          
+           
+            <button class="btn btn-outline-success" (click)="showUserForm()">Add User</button>
+          <!-- <button [ngClass]="[router.isActive('/user', true) ? 'd-none': 'd-block' ]" class="btn btn-outline-success" (click)="btnClick()"   type="Add Employ">Login</button> 
+          <button [ngClass]="[router.isActive('/user', true) ? 'd-block': 'd-none' ]" class="btn btn-outline-success" (click)="logout()"   type="Add Employ">LogOut</button>-->
+          <button class="btn btn-outline-danger mx-2" (click)="logout()">LogOut</button>
         </div>
       </div>
     </div>

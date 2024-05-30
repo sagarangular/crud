@@ -11,7 +11,7 @@ export class AuthService implements CanActivate {
   login(username:string,password:string){
     if(username=="admin"&& password=="admin"){
       this.loggedIn=true;
-      this.router.navigate(["user"]);
+      this.router.navigate(["/dashboard/user"]);
       return true;
     }
     return false;

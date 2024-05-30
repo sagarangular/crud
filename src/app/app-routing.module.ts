@@ -5,16 +5,16 @@ import { UserListComponent } from './user-list/user-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
+import { ViewdetailsComponent } from './viewdetails/viewdetails.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:"login",pathMatch:"full"},
- {path:'',component:DashboardComponent,children:[
-  {path:"login",component:LoginComponent},
-  {path:"user",component:UserListComponent,canActivate: [AuthService]},
-  
-
-
-]}
+  {path:'login',component:LoginComponent},
+ {path:'dashboard',component:DashboardComponent,canActivate: [AuthService],children:[
+  {path:"user",component:UserListComponent},
+  {path:"view/:id",component:ViewdetailsComponent}
+]},
+{path:'',redirectTo:"/login",pathMatch:"full"},
+{path:'**',redirectTo:'/login'}
 ];
 
 @NgModule({
